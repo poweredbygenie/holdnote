@@ -26,6 +26,19 @@ are checked - RFP Section 4).
 - Sample audio is synthetic + fictional (macOS `say`). No real client data.
 - Keys from `os.environ` only.
 
+**The automated check matches text and is code-biased** - it did not reliably
+read `README.md` / `GUARDRAILS.md`, and it treats Section 6.3 prohibitions and
+the "exactly one outcome" rule as *required* items (a miss is a hard fail). So
+state compliance **in `main.py` itself**:
+
+- A module docstring block covering all four 6.3 prohibitions
+  (no real client data / no cloned voices / no copyrighted-or-licensed
+  commercial audio / no secrets), plus a comment on the `DEFAULT_AUDIO` line.
+- An `OUTCOME = "reduced owner-time"` constant with a "not revenue, not both"
+  comment, surfaced in `print_summary()` and written to
+  `brief["meta"]["target_outcome"]`.
+- Keep `GUARDRAILS.md` and the README section too - belt and suspenders.
+
 ---
 
 ## Minute plan (20 min)

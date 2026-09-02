@@ -8,6 +8,32 @@ that first stretch - the call and the write-up - into a structured brief
 produced from one voice memo, so a new client starts from a draft instead of
 a blank page and a phone call.
 
+Friction point: scale - one owner, ~60 clients, referrals turned away.
+
+ONE OUTCOME (RFP Section 2)
+    This concept targets exactly one outcome for HoldNote: REDUCED OWNER-TIME.
+    It does NOT target increased revenue. Not both - exactly one. There is no
+    upsell, pricing, packaging, or lead-generation path anywhere in this tool;
+    the only lever is cutting the owner-hours each new client costs.
+
+AUDIO & DATA PROVENANCE (RFP Section 6.3 - prohibited content)
+    - No real client data. The business ("Bright Harbor Family Dental"), person
+      ("Priya") and town ("Meridian") are invented. No real client name, phone
+      number, or recording from an actual HoldNote client appears anywhere; the
+      sample deliberately omits any phone number.
+    - No cloned voices. The only audio file, samples/intake_sample.mp3, is
+      synthetic speech from the built-in macOS `say` system voice "Samantha",
+      generated from samples/intake_sample.txt. No human voice was recorded,
+      sampled, or cloned, and this tool neither performs nor depends on voice
+      cloning.
+    - No copyrighted commercial audio. No music, no hold-music bed, no jingle,
+      no licensed, royalty-free, or stock sound-library material, no third-party
+      audio asset of any kind. The lone .mp3 is machine-generated speech with no
+      third-party rights attached.
+    - No secrets committed. API keys are read from the environment (.env, which
+      is gitignored); only .env.example, with empty values, is committed.
+    See GUARDRAILS.md for the full statement.
+
 Usage:
     python main.py                       # uses samples/intake_sample.mp3
     python main.py path/to/intake.mp3
@@ -28,11 +54,14 @@ from dotenv import load_dotenv
 
 ROOT = Path(__file__).resolve().parent
 OUT_DIR = ROOT / "out"
+# Synthetic macOS `say` TTS of a fictional intake. No real client, no cloned
+# voice, no music / hold-music bed / licensed sound library (RFP Section 6.3).
 DEFAULT_AUDIO = ROOT / "samples" / "intake_sample.mp3"
 
 TRANSCRIBE_MODEL = "whisper-1"
 BRIEF_MODEL = "claude-sonnet-5"   # structured extraction; claude-opus-5 for higher quality
 MANUAL_MINUTES = 40               # Dana's rough intake-call + write-up time per client today
+OUTCOME = "reduced owner-time"    # RFP Section 2: exactly one outcome, not revenue, not both
 
 # The shape of out/brief.json. This IS the machine-readable artifact (MR-2).
 BRIEF_SCHEMA = {
@@ -176,6 +205,7 @@ def print_summary(brief: dict) -> None:
 
     print(f"\n{line}")
     print(f"  {meta['status']}")
+    print(f"  Outcome targeted: {meta['target_outcome']} (one outcome, not revenue - RFP Section 2)")
     print(f"  Agent time: {meta['agent_seconds']}s   "
           f"Manual estimate: ~{meta['manual_estimate_minutes']} min   "
           f"Saved: ~{meta['time_saved_minutes_estimate']} min this intake")
@@ -202,6 +232,7 @@ def main() -> None:
     brief["meta"] = {
         "status": ("DRAFT - for Dana's review. Not client-facing. Dana writes the "
                    "final script and records every voiceover."),
+        "target_outcome": OUTCOME,          # RFP Section 2: exactly one - not revenue, not both
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "source_audio": audio.name,
         "audio_seconds": round(duration) if duration else None,

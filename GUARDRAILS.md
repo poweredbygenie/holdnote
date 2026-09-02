@@ -39,14 +39,23 @@ ffmpeg -i /tmp/intake.aiff -ac 1 -ar 16000 -b:a 64k samples/intake_sample.mp3
 No person's voice was recorded or used as a model. The tool itself does not
 perform, request, or depend on voice cloning at any point in its flow.
 
-## No copyrighted commercial audio (music, hold-music beds, sound libraries without rights)
+## No copyrighted commercial audio (music, hold-music beds, unlicensed sound libraries)
 
 There is no music, hold-music bed, jingle, stinger, or third-party
-sound-library asset anywhere in this repository. The single audio file is
-machine-generated speech and carries no third-party rights.
+sound-library asset anywhere in this repository. No licensed, royalty-free, or
+stock audio is used. The single audio file, `samples/intake_sample.mp3`, is
+machine-generated text-to-speech and carries no third-party rights.
 
 Speech-to-text is performed by the OpenAI API at runtime; no audio model,
 dataset, or media library is bundled with or redistributed by this repository.
+
+## Exactly one outcome (RFP Section 2)
+
+This concept targets exactly one outcome for HoldNote: **reduced owner-time**.
+It does not target increased revenue, and it does not try to do both. There is
+no upsell, pricing, packaging, or lead-generation path in the tool. This is
+declared in code as the `OUTCOME` constant in `main.py` and recorded in every
+run's `out/brief.json` as `meta.target_outcome`.
 
 ## Scope note
 

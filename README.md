@@ -13,11 +13,18 @@ client is a fixed block of Dana's hours - and it starts with a 20-to-30-minute
 intake call plus a write-up that evening. That stretch is the same shape for
 every client, and it is the part that does not need to be Dana.
 
-## The outcome: less owner-time
+## The outcome: reduced owner-time (exactly one outcome, not both)
 
-One outcome, not two (RFP Section 2). Each run reports its own number in
-`out/brief.json` under `meta.time_saved_minutes_estimate`: agent wall-clock time
-versus a ~40-minute manual estimate for the same call-plus-write-up.
+Per RFP Section 2, this concept targets **exactly one** outcome for HoldNote:
+**reduced owner-time**. It does **not** target increased revenue - no upsell, no
+pricing, no packaging, no lead generation anywhere in the tool. The single lever
+is cutting the owner-hours each new client costs. This is also stated in
+`main.py` (`OUTCOME`) and written into every run's `out/brief.json` as
+`meta.target_outcome`.
+
+Each run reports its own number in `out/brief.json` under
+`meta.time_saved_minutes_estimate`: agent wall-clock time versus a ~40-minute
+manual estimate for the same call-plus-write-up.
 
 ## What Dana still does
 

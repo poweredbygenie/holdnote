@@ -1,5 +1,11 @@
-Fictional intake, written for this prototype. Not a real business or person.
-This is the script that was fed to macOS `say` to produce intake_sample.mp3.
+Fictional intake, written for this prototype. Not a real business or person, and
+not a recording of any real HoldNote client. No real phone number appears here.
+
+This text was fed to the built-in macOS `say` command (system voice "Samantha")
+to produce intake_sample.mp3. No human voice was recorded, sampled, or cloned.
+The audio contains no music, no hold-music bed, no jingle, and no licensed,
+royalty-free, or stock sound-library material - it is machine-generated speech
+only. (RFP Section 6.3)
 
 ---
 
