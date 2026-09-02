@@ -1,0 +1,69 @@
+# HoldNote - Intake to Brief
+
+Dana takes every new-client intake call personally, then spends that evening
+rebuilding the call into notes she can write a 30-second on-hold script from.
+This tool turns that first stretch - the call and the write-up - into a
+structured brief produced from a single voice memo, so onboarding a client
+starts from a reviewable draft instead of a blank page and a phone call.
+
+## The friction point: scale
+
+One person. Around sixty clients. Referrals get turned away, because every new
+client is a fixed block of Dana's hours - and it starts with a 20-to-30-minute
+intake call plus a write-up that evening. That stretch is the same shape for
+every client, and it is the part that does not need to be Dana.
+
+## The outcome: less owner-time
+
+One outcome, not two (RFP Section 2). Each run reports its own number in
+`out/brief.json` under `meta.time_saved_minutes_estimate`: agent wall-clock time
+versus a ~40-minute manual estimate for the same call-plus-write-up.
+
+## What Dana still does
+
+The brief is an internal draft. This tool never contacts a client, never writes
+the final script, and never records anything. Dana writes every script and
+records every voiceover - that is what clients are paying for. Anything the
+model was not sure of is listed under `needs_confirmation` rather than guessed,
+because deciding what a caller meant is Dana's call.
+
+## Run it
+
+```
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env          # add your OpenAI + Anthropic keys
+python main.py                # uses samples/intake_sample.mp3
+# or:  python main.py path/to/your-intake.mp3
+```
+
+Output: `out/brief.json`, plus a summary printed to the terminal.
+
+## Audio is the input, not a garnish
+
+The point is that the client *speaks* - the way they would on the phone - and
+nothing from that call gets lost. A typed form would defeat the purpose: people
+don't type the origin story or the running joke, they say it. Transcription is
+OpenAI Whisper; the brief is written by Claude. `samples/intake_sample.mp3` is a
+synthetic, fictional intake (macOS `say`) - no real client.
+
+## What I deliberately did not build (20-minute scope)
+
+- **The interview itself** - Dana keeps the client relationship.
+- **The script draft and the voiceover** - Dana's craft, and the actual product.
+- TTS / audio preview, brand-voice scoring, a web UI, phone integration,
+  multi-client storage, a follow-up question loop.
+
+Each is a real next step. None is the core, and the core is the part that had to
+actually work.
+
+## Requirements map
+
+| ID   | Where |
+|------|-------|
+| MR-1 | Spoken intake, transcribed - `transcribe()` in `main.py` |
+| MR-2 | `out/brief.json`; shape defined by `BRIEF_SCHEMA` in `main.py` |
+| MR-3 | Single entry point: `python main.py` |
+| MR-4 | Keys read from env via `.env` / `os.environ`; `.env` is gitignored |
+| OR-1 | Transcribes a spoken intake description into text |
+| OR-6 | `meta` block reports agent time vs. manual estimate, in the tool |

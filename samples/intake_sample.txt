@@ -1,0 +1,17 @@
+Fictional intake, written for this prototype. Not a real business or person.
+This is the script that was fed to macOS `say` to produce intake_sample.mp3.
+
+---
+
+Hi, yeah, so this is Priya calling from Bright Harbor Family Dental over in Meridian.
+We've been open about six years now. The thing people always say when they walk in is
+that it doesn't smell like a dentist's office. My husband bakes bread in the back on
+Fridays and honestly the whole place smells like a bakery, the patients love it.
+We're a family practice, so it's a lot of kids, and a lot of nervous grown-ups too.
+We're open Monday through Thursday, eight to five, and on Fridays we close at noon.
+Right now we're running something for new patients, a cleaning and X-rays for, I think
+it's ninety-nine dollars, let me double check that number before you use it. Oh, and
+we just started a Saturday emergency clinic, one Saturday a month. The main thing I
+want people to hear when they're on hold is that if they're in pain, we will always
+find a way to see them the same day. Our phone number is the same as it's always been.
+That's really it. Thanks.
