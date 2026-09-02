@@ -10,6 +10,13 @@ a blank page and a phone call.
 
 Friction point: scale - one owner, ~60 clients, referrals turned away.
 
+BUILD PROVENANCE (RFP Section 4)
+    Prepared before kickoff: only a generic Python environment (venv plus the
+    openai, anthropic, and python-dotenv packages) and the challenge's public
+    RFP. No project-specific code predates this repository's first commit, and
+    none of this code is copied from a prior project - it was written from
+    scratch for this build. The commit history is the record.
+
 ONE OUTCOME (RFP Section 2)
     This concept targets exactly one outcome for HoldNote: REDUCED OWNER-TIME.
     It does NOT target increased revenue. Not both - exactly one. There is no
@@ -26,10 +33,11 @@ AUDIO & DATA PROVENANCE (RFP Section 6.3 - prohibited content)
       generated from samples/intake_sample.txt. No human voice was recorded,
       sampled, or cloned, and this tool neither performs nor depends on voice
       cloning.
-    - No copyrighted commercial audio. No music, no hold-music bed, no jingle,
-      no licensed, royalty-free, or stock sound-library material, no third-party
-      audio asset of any kind. The lone .mp3 is machine-generated speech with no
-      third-party rights attached.
+    - No copyrighted commercial audio. No music, no hold-music beds, no jingle,
+      and no sound libraries without rights (none are used at all), including
+      licensed, royalty-free, or stock material. The lone .mp3 is
+      machine-generated text-to-speech with no third-party rights attached.
+      See samples/README.md.
     - No secrets committed. API keys are read from the environment (.env, which
       is gitignored); only .env.example, with empty values, is committed.
     See GUARDRAILS.md for the full statement.

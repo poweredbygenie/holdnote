@@ -67,11 +67,20 @@ Full detail in [GUARDRAILS.md](GUARDRAILS.md). In short:
   built-in macOS text-to-speech voice "Samantha" (`say` command) from
   `samples/intake_sample.txt`. No person's voice was recorded, sampled, or
   cloned, and the tool neither performs nor depends on voice cloning.
-- **No copyrighted commercial audio.** No music, hold-music bed, jingle, or
-  third-party sound-library asset is included. The single audio file is
-  machine-generated speech with no third-party rights attached.
+- **No copyrighted commercial audio.** No music, no hold-music beds, no jingle,
+  and no sound libraries without rights - none are used at all, licensed or
+  otherwise. The single audio file is machine-generated text-to-speech with no
+  third-party rights attached. See [`samples/README.md`](samples/README.md).
 - **No secrets committed.** Keys are read from the environment; `.env` is
   gitignored and only `.env.example` (empty values) is committed.
+
+## Build provenance (RFP Section 4)
+
+Prepared before kickoff: only a generic Python environment (venv + the `openai`,
+`anthropic`, and `python-dotenv` packages) and the challenge's public RFP - no
+project-specific code. Every project-specific file here was written from scratch
+for this build; none is copied from a prior project, and none predates this
+repository's first commit. The commit history is the record.
 
 ## What I deliberately did not build (20-minute scope)
 

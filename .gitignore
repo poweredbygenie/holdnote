@@ -1,3 +1,14 @@
+# Build provenance (RFP Section 4): every project-specific file in this repo was
+# written from scratch for this build. Nothing is copied from a prior project and
+# nothing predates the first commit. Prepared before kickoff: only a generic
+# Python environment (venv + openai/anthropic/python-dotenv) and the public RFP.
+# The commit history is the record. See README.md "Build provenance".
+#
+# Audio (RFP Section 6.3): the only audio file, samples/intake_sample.mp3, is
+# machine-generated macOS `say` text-to-speech. No music, no hold-music beds, no
+# jingle, no sound libraries without rights (none used at all), no cloned voices,
+# no real client recording. See samples/README.md.
+
 .env
 .venv/
 __pycache__/
